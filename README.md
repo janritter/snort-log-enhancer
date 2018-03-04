@@ -14,13 +14,12 @@ go get
 ```
 - Build the executable
 ```
-go install
+go build
 ```
 
 ## How to use
-You can find the executable in the bin subfolder of the project root folder
 
-- Start BlockLog (Linux)
+- Start BlockLog (Linux command shown) 
 ```
 ./blocklog 
 ```
