@@ -10,11 +10,14 @@ import (
 	"github.com/janritter/go-geo-ip/geoip"
 	"github.com/cheggaaa/pb"
 	"bytes"
+	"strconv"
 )
 
 type BlockedIP struct {
 	IP string
 	Country string
+	Latitude float64
+	Longitude float64
 }
 
 func main() {
@@ -47,9 +50,13 @@ func main() {
 			log.Fatal(readErr)
 		}
 
+		geoIpData := geoip.ForIp(line[0])
+
 		blockedIps = append(blockedIps, BlockedIP{
 			IP: line[0],
-			Country: geoip.ForIp(line[0]).CountryName,
+			Country: geoIpData.CountryName,
+			Latitude: geoIpData.Latitude,
+			Longitude: geoIpData.Longitude,
 		})
 
 		bar.Increment()
@@ -65,11 +72,23 @@ func main() {
 	csvWriter := csv.NewWriter(resultFile)
 	defer csvWriter.Flush()
 
+	//Write header
+	var values[] string
+	values = append(values, "IP")
+	values = append(values, "Country")
+	values = append(values, "Latitude")
+	values = append(values, "Longitude")
+	if err := csvWriter.Write(values); err != nil {
+		log.Fatal(err)
+	}
+
 	for i:=0; i<len(blockedIps);i++  {
 		singleStruct := blockedIps[i]
 		var values [] string
 		values = append(values, singleStruct.IP)
 		values = append(values, singleStruct.Country)
+		values = append(values, strconv.FormatFloat(singleStruct.Latitude, 'f', 5, 64))
+		values = append(values, strconv.FormatFloat(singleStruct.Longitude, 'f', 5, 64))
 		if err := csvWriter.Write(values); err != nil {
 			log.Fatal(err)
 		}
