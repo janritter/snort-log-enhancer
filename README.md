@@ -19,6 +19,7 @@ go build
 
 ## How to use
 
+- Build the binaries or download prebuilt binaries from the release page 
 - Start BlockLog (Linux command shown) 
 ```
 ./blocklog 
@@ -35,7 +36,8 @@ go build
 ```
 - BlockLog will create an enhanced version of the logfile, which will look like this: 
 ```
-1.2.3.4,United States
-5.6.7.8,Germany
+IP,Country,Latitude,Longitude
+1.2.3.4,United States,47.91300,-122.30420
+5.6.7.8,Germany,51.29930,9.49100
 ```
 
