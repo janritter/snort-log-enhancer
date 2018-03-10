@@ -1,13 +1,13 @@
 stages:
   - test
   - name: release
-        if: branch = master
+    if: branch = master
   - name: build
-        if: branch = master
+    if: branch = master
 
 env:
-  - "PATH=/home/travis/gopath/bin:$PATH"
-  - "TRAVIS_GO_VERSION" = release
+  - PATH=/home/travis/gopath/bin:$PATH
+  - TRAVIS_GO_VERSION=release
 
 jobs:
   include:
