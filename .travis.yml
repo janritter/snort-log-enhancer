@@ -12,8 +12,11 @@ before_install:
 script:
   - echo "TODO TEST"
 after_success:
+  # semantic release to github
+  - npm install --save-dev semantic-release-github
+  - $(npm bin)/semantic-release-github
   # cd in the correct folder
   - cd ./src/blocklog
   # Gox build and release
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
-  - ghr --username janritter --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
+  - ghr --username janritter --token $GITHUB_TOKEN --replace --prerelease --debug release dist/
