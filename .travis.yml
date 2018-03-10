@@ -19,4 +19,10 @@ after_success:
   - cd ./src/blocklog
   # Gox build and release
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
-  - ghr --username janritter --token $GITHUB_TOKEN --replace --prerelease --debug release dist/
+  - ghr --username janritter --token $GITHUB_TOKEN --replace --release --debug release dist/
+
+branches:
+  only:
+    - master
+    - /^feature.*$/
+    - /^fix.*$/
