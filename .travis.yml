@@ -24,10 +24,9 @@ jobs:
       script:
         - $(npm bin)/semantic-release-github
     - stage: build
-      install:
+    - script:
         - go get github.com/mitchellh/gox
         - go get github.com/tcnksm/ghr
-    - script:
         - cd ./src/blocklog
         - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
         - ghr --username janritter --token $GITHUB_TOKEN --replace --debug $(git describe --abbrev=0 --tags) dist/
