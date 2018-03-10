@@ -5,9 +5,8 @@ stages:
   - name: build
     if: branch = master
 
-env:
-  - PATH=/home/travis/gopath/bin:$PATH
-  - TRAVIS_GO_VERSION=release
+go:
+  - release
 
 jobs:
   include:
