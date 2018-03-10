@@ -13,7 +13,7 @@ script:
   - echo "TODO TEST"
 after_success:
   # semantic release to github
-  - npm install --save-dev semantic-release-github
+  - npm install semantic-release-github
   - $(npm bin)/semantic-release-github
   # cd in the correct folder
   - cd ./src/blocklog
