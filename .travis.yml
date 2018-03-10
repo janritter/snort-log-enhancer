@@ -1,0 +1,26 @@
+language: go
+go:
+  - release
+env:
+  - "PATH=/home/travis/gopath/bin:$PATH"
+before_install:
+  - go get github.com/mitchellh/gox
+  - go get github.com/tcnksm/ghr
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+script:
+  - echo "TODO TEST"
+after_success:
+  # semantic release to github
+  - npm install semantic-release-github
+  - $(npm bin)/semantic-release-github
+  # cd in the correct folder
+  - cd ./src/blocklog
+  # Gox build and release
+  - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+  - ghr --username janritter --token $GITHUB_TOKEN --replace --release --debug release dist/
+
+branches:
+  only:
+    - master

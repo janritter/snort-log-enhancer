@@ -1,0 +1,23 @@
+{
+  "name": "snort-log-enhancer",
+  "version": "1.0.0",
+  "description": "This Tool enhances your default snort logfile's with geoip informationen. For more information take a look at the example section.",
+  "main": " ",
+  "dependencies": {
+    "semantic-release-github": "^3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janritter/snort-log-enhancer.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/janritter/snort-log-enhancer/issues"
+  },
+  "homepage": "https://github.com/janritter/snort-log-enhancer#readme"
+}

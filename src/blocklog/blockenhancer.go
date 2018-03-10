@@ -13,7 +13,7 @@ import (
 	"strconv"
 )
 
-type BlockedIP struct {
+type blockedIP struct {
 	IP string
 	Country string
 	Latitude float64
@@ -40,7 +40,7 @@ func main() {
 	//Reset line pointer after line counting
 	csvFile.Seek(0, 0) // reset/rewind back to offset and whence 0 0
 
-	var blockedIps []BlockedIP
+	var blockedIps []blockedIP
 
 	for {
 		line, readErr := reader.Read()
@@ -50,9 +50,9 @@ func main() {
 			log.Fatal(readErr)
 		}
 
-		geoIpData := geoip.ForIp(line[0])
+		geoIpData := geoip.ForIP(line[0])
 
-		blockedIps = append(blockedIps, BlockedIP{
+		blockedIps = append(blockedIps, blockedIP{
 			IP: line[0],
 			Country: geoIpData.CountryName,
 			Latitude: geoIpData.Latitude,
