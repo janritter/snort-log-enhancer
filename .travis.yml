@@ -24,5 +24,3 @@ after_success:
 branches:
   only:
     - master
-    - /^feature.*$/
-    - /^fix.*$/
