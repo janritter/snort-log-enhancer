@@ -1,4 +1,6 @@
 # Snort Log enhancer 
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjanritter%2Fsnort-log-enhancer.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjanritter%2Fsnort-log-enhancer?ref=badge_shield)
+
 
 This Tool enhances your default snort logfile's with geoip informationen.
 For more information take a look at the example section.
@@ -41,3 +43,7 @@ IP,Country,Latitude,Longitude
 5.6.7.8,Germany,51.29930,9.49100
 ```
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjanritter%2Fsnort-log-enhancer.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjanritter%2Fsnort-log-enhancer?ref=badge_large)
