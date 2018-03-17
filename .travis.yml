@@ -1,21 +1,19 @@
-language: go
-
 stages:
   - test
   - name: release
-    if: branch = master
+    if: branch = master AND type != pull_request
   - name: build
-    if: branch = master
-
-go:
-  - release
+    if: branch = master AND type != pull_request
 
 jobs:
   include:
     - stage: test
+      language: go
+      go: 'release'
       script:
         - echo "TODO TEST"
     - stage: release
+      language: node_js
       install:
         - . $HOME/.nvm/nvm.sh
         - nvm install stable
@@ -24,7 +22,9 @@ jobs:
       script:
         - $(npm bin)/semantic-release-github
     - stage: build
-    - script:
+      language: go
+      go: 'release'
+      script:
         - go get github.com/mitchellh/gox
         - go get github.com/tcnksm/ghr
         - cd ./src/blocklog
