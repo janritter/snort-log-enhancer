@@ -50,14 +50,17 @@ func main() {
 			log.Fatal(readErr)
 		}
 
-		geoIpData := geoip.ForIP(line[0])
+		geoIpData, err := geoip.ForIP(line[0])
 
-		blockedIps = append(blockedIps, blockedIP{
-			IP: line[0],
-			Country: geoIpData.CountryName,
-			Latitude: geoIpData.Latitude,
-			Longitude: geoIpData.Longitude,
-		})
+		//Only save successful IPs
+		if err == nil {
+			blockedIps = append(blockedIps, blockedIP{
+				IP:        line[0],
+				Country:   geoIpData.CountryName,
+				Latitude:  geoIpData.Latitude,
+				Longitude: geoIpData.Longitude,
+			})
+		}
 
 		bar.Increment()
 	}
