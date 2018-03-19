@@ -1,4 +1,4 @@
-package main
+package blocklog
 
 import (
 	"fmt"
@@ -20,7 +20,7 @@ type blockedIP struct {
 	Longitude float64
 }
 
-func main() {
+func Main() {
 	fmt.Println("Input blockfile filename: ")
 	filename := ""
 	fmt.Scanf("%s", &filename)
