@@ -11,7 +11,7 @@ jobs:
       language: go
       go: 'release'
       before_install:
-        - cd ./src/logenhancer
+        - cd ./logenhancer
       script:
         - echo "TODO TEST"
     - stage: release
@@ -29,6 +29,6 @@ jobs:
       script:
         - go get github.com/mitchellh/gox
         - go get github.com/tcnksm/ghr
-        - cd ./src/logenhancer
+        - cd ./logenhancer
         - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
         - ghr --username janritter --token $GITHUB_TOKEN --replace --debug $(git describe --abbrev=0 --tags) dist/

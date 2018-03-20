@@ -1,7 +1,7 @@
 package main
 
 import (
-	"logenhancer/blocklog"
+	"github.com/janritter/snort-log-enhancer/logenhancer/blocklog"
 	"fmt"
 	"os"
 )
