@@ -9,8 +9,8 @@ import (
 	"io"
 	"github.com/janritter/go-geo-ip/geoip"
 	"github.com/cheggaaa/pb"
-	"bytes"
 	"strconv"
+	"github.com/janritter/snort-log-enhancer/logenhancer/logutils"
 )
 
 type blockedIP struct {
@@ -34,7 +34,7 @@ func Main() {
 	reader := csv.NewReader(bufio.NewReader(csvFile))
 
 	//Start new Progressbar
-	count , _ := lineCounter(csvFile)
+	count , _ := logutils.LineCounter(csvFile)
 	bar := pb.StartNew(count)
 
 	//Reset line pointer after line counting
@@ -98,23 +98,4 @@ func Main() {
 	}
 
 	bar.FinishPrint("Finished enhancing!")
-}
-
-func lineCounter(r io.Reader) (int, error) {
-	buf := make([]byte, 32*1024)
-	count := 0
-	lineSep := []byte{'\n'}
-
-	for {
-		c, err := r.Read(buf)
-		count += bytes.Count(buf[:c], lineSep)
-
-		switch {
-		case err == io.EOF:
-			return count, nil
-
-		case err != nil:
-			return count, err
-		}
-	}
 }
