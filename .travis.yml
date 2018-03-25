@@ -10,6 +10,8 @@ jobs:
     - stage: test
       language: go
       go: 'release'
+      before_install:
+        - cd ./logenhancer
       script:
         - echo "TODO TEST"
     - stage: release
@@ -27,6 +29,6 @@ jobs:
       script:
         - go get github.com/mitchellh/gox
         - go get github.com/tcnksm/ghr
-        - cd ./src/blocklog
+        - cd ./logenhancer
         - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
         - ghr --username janritter --token $GITHUB_TOKEN --replace --debug $(git describe --abbrev=0 --tags) dist/
