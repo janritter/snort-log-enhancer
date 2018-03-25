@@ -1,11 +1,11 @@
-package logutils
+package main
 
 import (
 	"io"
 	"bytes"
 )
 
-func LineCounter(r io.Reader) (int, error) {
+func lineCounter(r io.Reader) (int, error) {
 	buf := make([]byte, 32*1024)
 	count := 0
 	lineSep := []byte{'\n'}

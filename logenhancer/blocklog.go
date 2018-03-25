@@ -1,4 +1,4 @@
-package blocklog
+package main
 
 import (
 	"fmt"
@@ -10,7 +10,6 @@ import (
 	"github.com/janritter/go-geo-ip/geoip"
 	"github.com/cheggaaa/pb"
 	"strconv"
-	"github.com/janritter/snort-log-enhancer/logenhancer/logutils"
 )
 
 type blockedIP struct {
@@ -20,7 +19,7 @@ type blockedIP struct {
 	Longitude float64
 }
 
-func Main() {
+func runBlockLog() {
 	fmt.Println("Input blockfile filename: ")
 	filename := ""
 	fmt.Scanf("%s", &filename)
@@ -34,7 +33,7 @@ func Main() {
 	reader := csv.NewReader(bufio.NewReader(csvFile))
 
 	//Start new Progressbar
-	count , _ := logutils.LineCounter(csvFile)
+	count , _ := lineCounter(csvFile)
 	bar := pb.StartNew(count)
 
 	//Reset line pointer after line counting

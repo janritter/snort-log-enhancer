@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/janritter/snort-log-enhancer/logenhancer/blocklog"
 	"fmt"
 	"os"
 )
@@ -17,7 +16,7 @@ func main() {
 
 		switch filename {
 		case "1":
-			blocklog.Main()
+			runBlockLog()
 		case "2":
 			os.Exit(0)
 		default:
