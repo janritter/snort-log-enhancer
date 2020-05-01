@@ -4,11 +4,14 @@
   "description": "This Tool enhances your default snort logfile's with geoip informationen. For more information take a look at the example section.",
   "main": "index.js",
   "dependencies": {
-    "semantic-release-github": "^3.1.2"
+    "semantic-release-github": "^3.1.2",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/janritter/snort-log-enhancer/issues"
   },
-  "homepage": "https://github.com/janritter/snort-log-enhancer#readme"
+  "homepage": "https://github.com/janritter/snort-log-enhancer#readme",
+  "snyk": true
 }
